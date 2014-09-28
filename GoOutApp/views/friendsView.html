@@ -1,0 +1,26 @@
+<div data-role="view" id="view-all-friends" data-layout="main" class="friends-view" data-model="app.Friends">
+    <div data-role="header">
+        <div data-role="navbar">
+            Friends
+            <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" data-click="app.Events.logout"> Log out </a>
+            <a class="nav-button nav-button-add hide-text" data-align="right" data-role="button" href="views/addFriendView.html"> Add </a>
+        </div>
+    </div>
+
+    <ul id="friends-listview" data-style="inset" data-role="listview" data-template="friendTemplate" data-bind="source: friends"></ul>
+    <p id="no-friends-span" hidden="hidden" class="no-items-msg">
+        <b>No friends yet.</b><br /><br /> Add new friend.
+    </p>
+</div>
+
+<!-- Friends ListView Template -->
+<script type="text/x-kendo-template" id="friendTemplate">
+    <div data-role="touch" data-bind="events: { tap: friendSelected }" class="cf">
+        <div class="user-avatar">
+            <img data-bind="attr:{src: User().PictureUrl}" alt="styles/images/avatar.png" />
+        </div>
+        <div class="friend-content">
+            <h2 class="person-name">${User().DisplayName}</h2>
+        </div>
+    </div>
+</script>
