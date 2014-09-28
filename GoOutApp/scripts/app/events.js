@@ -32,15 +32,12 @@ app.Events = (function () {
                 }
             },
             CreatedAtFormatted: function () {
-
                 return app.helper.formatDate(this.get('CreatedAt'));
             },
             PictureUrl: function () {
-
                 return app.helper.resolvePictureUrl(this.get('Picture'));
             },
             User: function () {
-
                 var userId = this.get('UserId');
 
                 var user = $.grep(app.Users.users(), function (e) {
