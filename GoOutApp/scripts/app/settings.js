@@ -5,7 +5,7 @@
 var appSettings = {
 
     everlive: {
-        apiKey: '$EVERLIVE_API_KEY$', // Put your Backend Services API key here
+        apiKey: '39dbaEzAeRl1ddLP', // Put your Backend Services API key here
         scheme: 'http'
     },
 
@@ -15,7 +15,7 @@ var appSettings = {
     },
     
     feedback: {
-        apiKey: '$APPFEEDBACK_API_KEY$'  // Put your AppFeedback API key here
+        apiKey: '4497d6e0-46a4-11e4-b765-7d326e12e406'  // Put your AppFeedback API key here
     },
 
     facebook: {
