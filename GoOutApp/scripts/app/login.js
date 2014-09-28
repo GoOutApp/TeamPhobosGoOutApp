@@ -41,10 +41,6 @@ app.Login = (function () {
                 $('#loginWithLiveID').addClass('disabled');
                 console.log('LiveID Client ID and/or Redirect URI not set. You cannot use LiveID login.');
             }
-            if (!isAdfsLogin) {
-                $('#loginWithADSF').addClass('disabled');
-                console.log('ADFS Realm and/or Endpoint not set. You cannot use ADFS login.');
-            }
             if (!isAnalytics) {
                 console.log('EQATEC product key is not set. You cannot use EQATEC Analytics service.');
             }
@@ -73,7 +69,7 @@ app.Login = (function () {
             })
             .then(function () {
 
-                app.mobileApp.navigate('views/activitiesView.html');
+                app.mobileApp.navigate('views/eventsView.html');
             })
             .then(null,
                   function (err) {
@@ -117,7 +113,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                    app.mobileApp.navigate('views/eventsView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();
@@ -164,7 +160,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                    app.mobileApp.navigate('views/eventsView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();
@@ -211,50 +207,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
-                })
-                .then(null, function (err) {
-                    app.mobileApp.hideLoading();
-                    if (err.code == 214) {
-                        app.showError('The specified identity provider is not enabled in the backend portal.');
-                    } else {
-                        app.showError(err.message);
-                    }
-                });
-            });
-        };
-
-        var loginWithADSF = function () {
-
-            if (!isAdfsLogin) {
-                return;
-            }
-            if (isInMistSimulator) {
-                showMistAlert();
-                return;
-            }
-            var adfsConfig = {
-                name: 'ADFS',
-                loginMethodName: 'loginWithADFS',
-                endpoint: appSettings.adfs.adfsEndpoint,
-                wa: 'wsignin1.0',
-                wtrealm: appSettings.adfs.adfsRealm
-            };
-            var adfs = new IdentityProvider(adfsConfig);
-            app.mobileApp.showLoading();
-
-            adfs.getAccessToken(function(token) {
-                app.everlive.Users.loginWithADFS(token)
-                .then(function () {
-                    // EQATEC analytics monitor - track login type
-                    if (isAnalytics) {
-                        analytics.TrackFeature('Login.ADFS');
-                    }
-                    return app.Users.load();
-                })
-                .then(function () {
-                    app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                    app.mobileApp.navigate('views/eventsView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();
@@ -278,8 +231,7 @@ app.Login = (function () {
             login: login,
             loginWithFacebook: loginWithFacebook,
             loginWithGoogle: loginWithGoogle,
-            loginWithLiveID: loginWithLiveID,
-            loginWithADSF: loginWithADSF
+            loginWithLiveID: loginWithLiveID
         };
 
     }());
