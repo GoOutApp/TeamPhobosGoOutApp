@@ -70,6 +70,6 @@ app.EventModel = (function () {
         
     }());
     
-    return EventViewModel;
+    return eventViewModel;
     
 }());

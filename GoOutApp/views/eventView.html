@@ -1,4 +1,4 @@
-<div data-role="view" id="single-event" data-layout="main" class="event-view" data-init="app.Event.init" data-show="app.Event.show">
+<div data-role="view" id="single-event" data-layout="main" class="event-view" data-init="app.EventModel.init" data-show="app.EventModel.show">
     <div data-role="header">
         <div data-role="navbar">
             Event
@@ -23,7 +23,7 @@
     </div>
     
     <div data-role="footer">
-        <a data-role="button" data-bind="visible: isVisible" data-click="app.Event.remove" class="btn btn-delete"> Delete </a>
+        <a data-role="button" data-bind="visible: isVisible" data-click="app.EventModel.remove" class="btn btn-delete"> Delete </a>
     </div>
 </div>
 
