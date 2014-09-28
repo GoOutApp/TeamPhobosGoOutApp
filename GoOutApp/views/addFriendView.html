@@ -1,10 +1,10 @@
-<div data-role="view" id="share" data-layout="default" data-transition="overlay:down" class="add-event-view"
-    data-init="app.AddEvent.init" data-show="app.AddEvent.show" data-model="app.AddEvent">
+<div data-role="view" id="share" data-layout="default" data-transition="overlay:down" class="add-friend-view"
+    data-init="app.AddFriend.init" data-show="app.AddFriend.show" data-model="app.AddFriend">
     <div data-role="header">
         <div data-role="navbar">
-            Event
+            Friend
             <a class="nav-button nav-button-cancel" data-align="left" data-role="backbutton"> Back </a>
-            <a class="nav-button nav-button-post" data-align="right" data-role="button" data-bind="click: saveEvent"> Create </a>
+            <a class="nav-button nav-button-post" data-align="right" data-role="button" data-bind="click: saveFriend"> Add Friend </a>
         </div>
     </div>
     <div id="enterStatus" class="share-form-wrp" data-role="listview" data-style="inset">
@@ -13,7 +13,7 @@
         </div>
         <h2 class="person-name" data-bind="text: me.get('data').DisplayName"> Me </h2>
         <div class="user-share">
-            <textarea id="newStatus" placeholder="What event do you have in mind?" required validationMessage="Event description is required!"></textarea>
+            <textarea id="newStatus" placeholder="Select friend from friend list?" required validationMessage="Friend name is required!"></textarea>
         </div>
     </div>
 </div>

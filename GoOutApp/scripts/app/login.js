@@ -69,7 +69,7 @@ app.Login = (function () {
             })
             .then(function () {
 
-                app.mobileApp.navigate('views/eventsView.html');
+                app.mobileApp.navigate('views/homeView.html');
             })
             .then(null,
                   function (err) {
@@ -113,7 +113,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/eventsView.html');
+                    app.mobileApp.navigate('views/homeView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();
@@ -160,7 +160,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/eventsView.html');
+                    app.mobileApp.navigate('views/homeView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();
@@ -207,7 +207,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/eventsView.html');
+                    app.mobileApp.navigate('views/homeView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();

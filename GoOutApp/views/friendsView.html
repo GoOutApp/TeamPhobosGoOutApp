@@ -1,9 +1,7 @@
 <div data-role="view" id="view-all-friends" data-layout="main" class="friends-view" data-model="app.Friends">
     <div data-role="header">
         <div data-role="navbar">
-            Friends
-            <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" data-click="app.Friends.logout"> Log out </a>
-            <a class="nav-button nav-button-add hide-text" data-align="right" data-role="button" href="views/addFriendView.html"> Add </a>
+            <span data-role="view-title"> Friends </span>
         </div>
     </div>
 
@@ -11,6 +9,13 @@
     <p id="no-friends-span" hidden="hidden" class="no-items-msg">
         <b>No friends yet.</b><br /><br /> Add new friend.
     </p>
+    
+    <div data-role="footer">
+        <div data-role="tabstrip" class="tabstrip">
+            <a href="views/homeView.html" data-icon="home"> Home </a>
+            <a data-icon="add" href="views/addFriendView.html"> Add </a>
+        </div>
+    </div>
 </div>
 
 <!-- Friends ListView Template -->

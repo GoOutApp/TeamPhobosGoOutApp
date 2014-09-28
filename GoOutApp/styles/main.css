@@ -367,17 +367,17 @@
 }
 
 /* Activities */
-
-#goOutApp .activities-view .km-content,
-#goOutApp .activity-view .km-content,
-#goOutApp .add-activity-view .km-content,
-#goOutApp .add-comment-view .km-content,
-#goOutApp .activities-view .km-listview {
+#goOutApp .home-view .km-content,
+#goOutApp .events-view .km-content,
+#goOutApp .event-view .km-content,
+#goOutApp .add-event-view .km-content,
+#goOutApp .add-friend-view .km-content,
+#goOutApp .events-view .km-listview {
     background-color: #fff;
 }
 
-#goOutApp .activities-view .km-list > li,
-#goOutApp .activity-view .km-list > li {
+#goOutApp .events-view .km-list > li,
+#goOutApp .event-view .km-list > li {
     overflow: visible;
     padding: .75em 0;
     border-width: 0 0 1px;
@@ -388,12 +388,12 @@
     color: #34495e;
 }
 
-#goOutApp .activity-view .comments-wrp {
+#goOutApp .event-view .friends-wrp {
     margin-top: 1em;
     border-top: 1px solid #eaeced;
 }
 
-#goOutApp .activities-view .km-list > li:first-child {
+#goOutApp .events-view .km-list > li:first-child {
     padding-top: 0;
 }
 
@@ -410,22 +410,22 @@
     border-radius: 25px;
 }
 
-#goOutApp .activity-content {
+#goOutApp .event-content {
     position: relative;
     padding-left: 5em;
     font-size: .85rem;
 }
 
-#goOutApp .activity-content .person-name,
-#goOutApp .add-activity-view .person-name,
-#goOutApp .add-comment-view .person-name,
-#goOutApp .activity-content .time-span {
+#goOutApp .event-content .person-name,
+#goOutApp .add-event-view .person-name,
+#goOutApp .add-friend-view .person-name,
+#goOutApp .event-content .time-span {
     font-weight: 600;
 }
 
-#goOutApp .add-activity-view .person-name,
-#goOutApp .add-comment-view .person-name,
-#goOutApp .activity-content .person-name {
+#goOutApp .add-event-view .person-name,
+#goOutApp .add-friend-view .person-name,
+#goOutApp .event-content .person-name {
     display: block;
     margin: 0 0 .5em;
     color: #3598db;
@@ -439,7 +439,7 @@
     white-space: nowrap;
 }
 
-#goOutApp .activity-content .time-span {
+#goOutApp .event-content .time-span {
     position: absolute;
     top: 5px;
     right: 0;
@@ -448,7 +448,7 @@
     font-size: .7rem;
 }
 
-#goOutApp .activity-content .comment-content .time-span {
+#goOutApp .event-content .friend-content .time-span {
     top: 12px;
     font-size: .6rem;
 }
@@ -457,28 +457,28 @@
     color: #34495e;
 }
 
-#goOutApp .activity-content .comment-content .user-share-txt {
+#goOutApp .event-content .friend-content .user-share-txt {
     font-size: .75rem;
 }
 
-#goOutApp .activity-view .person-name,
-#goOutApp .add-activity-view .person-name,
-#goOutApp .add-comment-view .person-name {
+#goOutApp .event-view .person-name,
+#goOutApp .add-event-view .person-name,
+#goOutApp .add-friend-view .person-name {
     margin: .85em 0 1em;
 }
 
-#goOutApp .activity-view .comment-content .person-name {
+#goOutApp .event-view .friend-content .person-name {
     margin: 0;
     color: #6c7884;
     font-size: .85rem;
 }
 
-#goOutApp .add-activity-view .person-name,
-#goOutApp .add-comment-view .person-name {
+#goOutApp .add-event-view .person-name,
+#goOutApp .add-friend-view .person-name {
     padding-left: .75em;
 }
 
-#goOutApp .activity-view .picture {
+#goOutApp .event-view .picture {
     margin: 1em 0 0;
 }
 
@@ -512,19 +512,19 @@
     resize: none;
 }
 
-#goOutApp .activity-view .km-footer {
+#goOutApp .event-view .km-footer {
     padding: 0 1em 1em;
     background: #fff none;
 }
 
-#goOutApp .add-activity-view .km-leftitem,
-#goOutApp .add-comment-view .km-leftitem {
+#goOutApp .add-event-view .km-leftitem,
+#goOutApp .add-friend-view .km-leftitem {
     left: 1em;
 }
 
-#goOutApp .add-activity-view .km-rightitem,
-#goOutApp .add-comment-view .km-rightitem,
-#goOutApp .activity-view .km-rightitem {
+#goOutApp .add-event-view .km-rightitem,
+#goOutApp .add-friend-view .km-rightitem,
+#goOutApp .event-view .km-rightitem {
     right: 1em;
 }
 
