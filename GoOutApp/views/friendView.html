@@ -1,0 +1,30 @@
+<div data-role="view" id="single-friend" data-layout="main" class="friend-view" data-init="app.Friend.init" data-show="app.Friend.show">
+    <div data-role="header">
+        <div data-role="navbar">
+            Event
+            <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton"> Back </a>
+            <a class="nav-button nav-button-post" data-align="right" data-role="button" href="views/addFriendView.html"> Add </a>
+        </div>
+    </div>
+
+    <div id="status-container" class="user-status-wrp cf" data-role="listview" data-style="inset">
+        <div class="user-avatar">
+            <img data-bind="attr:{src: User().PictureUrl}" alt="styles/images/avatar.png" />
+        </div>
+        <div class="friend-content">
+            <h2 id="personName" class="person-name" data-bind='text: User().DisplayName'></h2>
+            <span id="eventDate" class="time-span" data-bind="text: CreatedAtFormatted"></span>
+        </div>
+    </div>
+    
+    <div data-role="footer">
+        <a data-role="button" data-bind="visible: isVisible" data-click="app.Friend.remove" class="btn btn-delete"> Delete </a>
+    </div>
+</div>
+
+<!-- Joins Template -->
+<script type="text/x-kendo-template" id="joinsTemplate">
+    <div class="join-content">
+        <h2 class="person-name">${User()}</h2>
+    </div>
+</script>
