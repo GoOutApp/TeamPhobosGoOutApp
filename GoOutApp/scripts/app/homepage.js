@@ -41,7 +41,6 @@ app.homepage = (function () {
 
             everlive.Files.get().then(function (data) {
                 var files = [];
-                files.reverse()
 
                 data.result.forEach(function (image) {
 
@@ -53,6 +52,8 @@ app.homepage = (function () {
                     }
                 });
 
+                files.reverse()
+                
                 $("#images").kendoMobileListView({
                     dataSource: files,
                     template: "<img src='#: data #'>"
