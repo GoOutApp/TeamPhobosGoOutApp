@@ -10,32 +10,17 @@ app.Friends = (function () {
 
             id: 'Id',
             fields: {
-                Text: {
-                    field: 'Text',
-                    defaultValue: ''
-                },
-                CreatedAt: {
-                    field: 'CreatedAt',
-                    defaultValue: new Date()
-                },
-                Picture: {
-                    fields: 'Picture',
-                    defaultValue: null
-                },
+            //    Picture: {
+            //        fields: 'Picture',
+            //        defaultValue: null
+            //    },
                 UserId: {
-                    field: 'UserId',
-                    defaultValue: null
+                    field: 'UserId'
                 },
-                Likes: {
-                    field: 'Likes',
+                UserFriends: {
+                    field: 'UserFriends',
                     defaultValue: []
                 }
-            },
-            CreatedAtFormatted: function () {
-                return app.helper.formatDate(this.get('CreatedAt'));
-            },
-            PictureUrl: function () {
-                return app.helper.resolvePictureUrl(this.get('Picture'));
             },
             User: function () {
                 var userId = this.get('UserId');
@@ -74,15 +59,48 @@ app.Friends = (function () {
             change: function (e) {
 
                 if (e.items && e.items.length > 0) {
-                    $('#no-events-span').hide();
+                    $('#no-friends-span').hide();
                 } else {
-                    $('#no-events-span').show();
+                    $('#no-friends-span').show();
                 }
+            }
+        });
+
+
+        var userModel = {
+            UserId: {
+                field: 'UserId'
             },
-            sort: { field: 'CreatedAt', dir: 'desc' }
+            Email: {
+                filed: 'Email'
+            },
+            DisplayName: {
+                field: 'DisplayName',
+                defaultValue: 'Anonymous'
+            }
+        };
+
+        var usersDataSource = new kendo.data.DataSource({
+            type: 'everlive',
+            schema: {
+                model: userModel
+            },
+            transport: {
+                // Required by Backend Services
+                typeName: 'Users'
+            },
+            change: function (e) {
+
+                if (e.items && e.items.length > 0) {
+                    $('#no-users-span').hide();
+                } else {
+                    $('#no-users-span').show();
+                }
+            }
         });
 
         return {
+            users: usersDataSource,
             friends: friendsDataSource
         };
 
@@ -96,29 +114,73 @@ app.Friends = (function () {
             app.mobileApp.navigate('views/friendView.html?uid=' + e.data.uid);
         };
 
-        // Navigate to app home
-        var navigateHome = function () {
-            app.mobileApp.navigate('#welcome');
+        var userSelected = function (e) {
+            console.log("ADD SELECTED USER TO FRIENDS LIST");
+            app.showConfirm(
+                appSettings.messages.addFriendConfirm,
+                'Add Friend',
+                function (confirmed) {
+                    if (confirmed === true || confirmed === 1) {
+
+                        console.log("User added!");
+                        //friends.add(friend);
+                        //friends.one('sync', function () {
+                        //    app.mobileApp.navigate('#:back');
+                        //});
+                        //friends.sync();
+                    }
+                }
+            );
+
+
+            //// GET USERS WITH Everlive
+            var el = new Everlive('39dbaEzAeRl1ddLP');
+            var allUsers;
+            el.Users.get()
+                .then(function (data) {
+                    allUsers = data.result;
+                    console.log(allUsers);
+                    
+                    //console.log(JSON.stringify(data));
+                },
+                function (error) {
+                    //console.log(JSON.stringify(error));
+                });
+
+            el.Users.getById('94712a30-46a5-11e4-ad1f-c9ada8b300e7')
+                .then(function (data) {
+
+                    //console.log(data.result.Username);
+                    //console.log(JSON.stringify(data));
+                },
+                function (error) {
+                    //console.log(JSON.stringify(error));
+                });
+
+
+            //// GET USERS WITH AJAX
+            //$.ajax({
+            //    url: 'https://api.everlive.com/v1/39dbaEzAeRl1ddLP/Users/' + userID,
+            //    type: "GET",
+            //    success: function (data) {
+            //        console.log(JSON.stringify(data, null, 2));
+            //    },
+            //    error: function (error) {
+            //        console.log(JSON.stringify(error, null, 2));
+            //    }
+            //});
+
         };
-
-        // Logout user
-        var logout = function () {
-
-            app.helper.logout()
-            .then(navigateHome, function (err) {
-                app.showError(err.message);
-                navigateHome();
-            });
-        };
-
+        
         return {
+            users: friendsModel.users,
+            userSelected: userSelected,
             friends: friendsModel.friends,
-            friendSelected: friendSelected,
-            logout: logout
+            friendSelected: friendSelected
         };
 
     }());
 
-    return friendsViewModel;
+    return friendsViewModel || {};
 
 }());

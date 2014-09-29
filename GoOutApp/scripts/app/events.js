@@ -10,29 +10,38 @@ app.Events = (function () {
 
             id: 'Id',
             fields: {
-                Text: {
-                    field: 'Text',
-                    defaultValue: ''
+                Description: {
+                    field: 'Description',
+                    defaultValue: 'No description provided'
+                },
+                EventDate: {
+                    field: 'EventDate',
+                    defaultValue: new Date()
+                },
+                Location: {
+                    field: 'Location',
+                    defaultValue: 'No location provided'
+                },
+                Joined: {
+                    field: 'Joined',
+                    defaultValue: 0
                 },
                 CreatedAt: {
                     field: 'CreatedAt',
                     defaultValue: new Date()
-                },
-                Picture: {
-                    fields: 'Picture',
-                    defaultValue: null
-                },
-                UserId: {
-                    field: 'UserId',
-                    defaultValue: null
-                },
-                Likes: {
-                    field: 'Likes',
-                    defaultValue: []
                 }
             },
             CreatedAtFormatted: function () {
-                return app.helper.formatDate(this.get('CreatedAt'));
+                return app.helper.formatDate(this.get('EventDate'));
+            },
+            LocationFormatted: function () {
+                //var location = this.get('Location');
+                //if (location != null && location != undefined && location != 'No location provided') {
+                //    return 'Latitude: ' + location.coords.latitude + '<br />' +
+				//		 'Longitude: ' + location.coords.longitude + '<br />';
+                //}
+
+                return 'No location provided';
             },
             PictureUrl: function () {
                 return app.helper.resolvePictureUrl(this.get('Picture'));
@@ -79,7 +88,12 @@ app.Events = (function () {
                     $('#no-events-span').show();
                 }
             },
-            sort: { field: 'CreatedAt', dir: 'desc' }
+            filter: {
+                field: "EventDate",
+                operator: "gt",
+                value: new Date()
+            },
+            sort: { field: 'EventDate', dir: 'asc' }
         });
 
         return {
@@ -95,27 +109,10 @@ app.Events = (function () {
         var eventSelected = function (e) {
             app.mobileApp.navigate('views/eventView.html?uid=' + e.data.uid);
         };
-
-        // Navigate to app home
-        var navigateHome = function () {
-
-            app.mobileApp.navigate('#welcome');
-        };
-
-        // Logout user
-        var logout = function () {
-
-            app.helper.logout()
-            .then(navigateHome, function (err) {
-                app.showError(err.message);
-                navigateHome();
-            });
-        };
-
+        
         return {
             events: eventsModel.events,
-            eventSelected: eventSelected,
-            logout: logout
+            eventSelected: eventSelected
         };
 
     }());

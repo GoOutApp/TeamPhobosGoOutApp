@@ -18,14 +18,16 @@
     </div>
 </div>
 
+
 <!-- Friends ListView Template -->
+
 <script type="text/x-kendo-template" id="friendTemplate">
     <div data-role="touch" data-bind="events: { tap: friendSelected }" class="cf">
         <div class="user-avatar">
-            <img data-bind="attr:{src: User().PictureUrl}" alt="styles/images/avatar.png" />
-        </div>
+            <img data-bind="attr:{src: Avatar}" alt="styles/images/avatar.png" />
+        </div> 
         <div class="friend-content">
-            <h2 class="person-name">${User().DisplayName}</h2>
+            <h2 class="person-name" style="color:red">${User().DisplayName}</h2>
         </div>
     </div>
 </script>

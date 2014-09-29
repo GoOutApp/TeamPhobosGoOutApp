@@ -37,7 +37,7 @@ app.AddFriend = (function () {
                     app.mobileApp.navigate('#:back');
                 });
                 
-                events.sync();
+                friends.sync();
             }
         };
         

@@ -5,8 +5,7 @@
         </div>
     </div>
     
-    <ul id="events-listview" data-style="inset" data-role="listview" data-template="eventTemplate"
-        data-bind="source: events"></ul>
+    <ul id="events-listview" data-style="inset" data-role="listview" data-template="eventTemplate" data-bind="source: events"></ul>
     <p id="no-events-span" hidden="hidden" class="no-items-msg">
         <b>No events yet.</b><br /><br /> Create new event.
     </p>
@@ -20,8 +19,6 @@
 </div>
 
 
-
-
 <!-- Events ListView Template -->
 <script type="text/x-kendo-template" id="eventTemplate">
     <div data-role="touch" data-bind="events: { tap: eventSelected }" class="cf">
@@ -31,7 +28,9 @@
         <div class="event-content">
             <h2 class="person-name">${User().DisplayName}</h2>
             <span class="time-span">${CreatedAtFormatted()}</span>
-            <a class="user-share-txt">${Text}</a>
+            <a class="user-share-txt">${Description}</a>
+            <br />
+            <a class="user-share-txt">Joined: ${Joined}</a>
         </div>
     </div>
 </script>

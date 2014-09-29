@@ -7,13 +7,27 @@
             <a class="nav-button nav-button-post" data-align="right" data-role="button" data-bind="click: saveEvent"> Create </a>
         </div>
     </div>
-    <div id="enterStatus" class="share-form-wrp" data-role="listview" data-style="inset">
+    <div id="enter-event" class="share-form-wrp" data-role="listview" data-style="inset">
         <div class="user-avatar">
             <img data-bind="attr:{src: me.get('data').PictureUrl}" alt="styles/images/avatar.png" />
         </div>
         <h2 class="person-name" data-bind="text: me.get('data').DisplayName"> Me </h2>
         <div class="user-share">
-            <textarea id="newStatus" placeholder="What event do you have in mind?" required validationMessage="Event description is required!"></textarea>
+            <textarea id="event-description" placeholder="What event do you have in mind?" required validationmessage="Event description is required!"></textarea>
         </div>
+        <div class="event-details">
+            <div>
+                <label for="event-date" > Choose event date </label>
+                <input id="event-date" type="date" name="Event date" required >
+            </div>
+            <div>
+                <label for="event-time" > Choose event time </label>
+                <input id="event-time" type="time" name="Event time" required >
+            </div>
+        </div>
+        <div id="event-location">
+
+        </div>
+        <a class="nav-button nav-button-cancel" data-align="left" data-role="button" data-bind="click: getGeolocation"> Get Current Location </a>
     </div>
 </div>

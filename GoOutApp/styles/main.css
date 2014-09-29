@@ -459,6 +459,23 @@ img { max-width: 100%; }
     color: #34495e;
 }
 
+#goOutApp .event-details {
+    padding: 5px;
+    position: relative;
+    margin: 2.35em 0 0;
+    color: #34495e;
+}
+
+#goOutApp .event-details input {
+    position:relative;
+    display:block
+}
+
+#goOutApp .event-details label {
+    color:black;
+    display:block
+}
+
 #goOutApp .event-content .friend-content .user-share-txt {
     font-size: .75rem;
 }

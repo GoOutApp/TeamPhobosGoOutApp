@@ -14,7 +14,8 @@
         <div class="event-content">
             <h2 id="personName" class="person-name" data-bind='text: User().DisplayName'></h2>
             <span id="eventDate" class="time-span" data-bind="text: CreatedAtFormatted"></span>
-            <span id="eventText" data-bind="text: Text" class="user-share-txt"></span>
+            <span id="eventDescription" data-bind="text: Description" class="user-share-txt"></span>
+            <div id="eventLocation" style="color: black" data-bind="text: LocationFormatted()"></div>
             <img id="picture" class="picture" data-bind="attr:{src: PictureUrl()}" width="100%"/>
             <div class="joins-wrp">
                 <ul id="joins-listview"></ul>

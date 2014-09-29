@@ -38,8 +38,10 @@ var appSettings = {
         adfsEndpoint: '$ADFS_ENDPOINT$' // Put your ADFS Endpoint here
     },
 
-    messages: {
+     messages: {
         mistSimulatorAlert: 'The social login doesn\'t work in the In-Browser Client, you need to deploy the app to a device, or run it in the simulator of the Windows Client or Visual Studio.',
-        removeActivityConfirm: 'Are you sure you want to delete this Activity?'
+        removeEventConfirm: 'Are you sure you want to delete this Event?',
+        removeFriendConfirm: 'Are you sure you want to remove this user from your friends list?',
+        addFriendConfirm: 'Are you sure you want to add this user to your friends list?',
     }
 };
