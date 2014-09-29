@@ -21,7 +21,7 @@ app.homepage = (function () {
                     ContentType: "image/jpeg",
                     base64: data
                 }).then(loadImage)
-                var url = everlive.DATA_URL(file);   // UPLOADED FILE URL
+                //var url = everlive.DATA_URL(file);
                 //app.Users.currentUser.Avatar = url;
                 //app.Users.users.sync();
                 //currentUser.set('Avatar') = file;

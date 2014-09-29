@@ -58,11 +58,16 @@ app.EventModel = (function () {
                 }
             );
         };
+
+        var joinEvent = function () {
+            console.log("You have joined this event!");
+        };
         
         return {
             init: init,
             show: show,
             remove: removeEvent,
+            join: joinEvent,
             event: function () {
                 return event;
             },

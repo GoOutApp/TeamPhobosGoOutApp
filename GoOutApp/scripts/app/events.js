@@ -7,7 +7,6 @@ app.Events = (function () {
     var eventsModel = (function () {
 
         var eventModel = {
-
             id: 'Id',
             fields: {
                 Description: {
@@ -34,14 +33,31 @@ app.Events = (function () {
             CreatedAtFormatted: function () {
                 return app.helper.formatDate(this.get('EventDate'));
             },
+            JoinedFormatter: function () {
+                var joinsCount = this.get('Joined');
+                if (joinsCount === null || joinsCount === undefined || joinsCount === 0) {
+                    return 'Noone has joined yet';
+                }
+                else {
+                    return 'Joined: ' + joinsCount;
+                }
+            },
             LocationFormatted: function () {
-                //var location = this.get('Location');
-                //if (location != null && location != undefined && location != 'No location provided') {
-                //    return 'Latitude: ' + location.coords.latitude + '<br />' +
-				//		 'Longitude: ' + location.coords.longitude + '<br />';
-                //}
-
-                return 'No location provided';
+                var eventCoords = this.get('Location');
+                console.log(eventCoords);
+                if (eventCoords !== 'No location provided') {
+                    
+                    var latlon = eventCoords.latitude + "," + eventCoords.longitude;
+                    var googleApi = 'http://maps.googleapis.com/maps/api/staticmap?center=';
+                    var options = '&zoom=11&size=400x300&sensor=false';
+                    var marker = '&markers=icon:http://thumb18.shutterstock.com/photos/thumb_large/347836/347836,1327514947,4.jpg|' + latlon;
+                    var img_url = googleApi + latlon + options + marker;
+                    document.getElementById("show-location").innerHTML = "<img src='" + img_url + "'>";
+                    return 'Location';
+                }
+                else {
+                    return 'No location provided!';
+                }
             },
             PictureUrl: function () {
                 return app.helper.resolvePictureUrl(this.get('Picture'));

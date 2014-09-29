@@ -3,7 +3,7 @@
         <div data-role="navbar">
             Event
             <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton"> Back </a>
-            <a class="nav-button nav-button-post" data-align="right" data-role="button" href="views/addEventView.html"> Join </a>
+            <a class="nav-button nav-button-post" data-align="right" data-role="button" data-click="app.EventModel.join"> Join </a>
         </div>
     </div>
 
@@ -15,11 +15,14 @@
             <h2 id="personName" class="person-name" data-bind='text: User().DisplayName'></h2>
             <span id="eventDate" class="time-span" data-bind="text: CreatedAtFormatted"></span>
             <span id="eventDescription" data-bind="text: Description" class="user-share-txt"></span>
-            <div id="eventLocation" style="color: black" data-bind="text: LocationFormatted()"></div>
             <img id="picture" class="picture" data-bind="attr:{src: PictureUrl()}" width="100%"/>
-            <div class="joins-wrp">
+            <div id="eventLocation" style="color: black" data-bind="text: LocationFormatted()"></div>
+            <div id="show-location" ></div>
+            <div id="join-count" style="color: black" data-bind="text: JoinedFormatter()"></div>
+            <!--<div class="joins-wrp">
+                <span id="joined" data-bind="text: Joined" ></span>
                 <ul id="joins-listview"></ul>
-            </div>
+            </div>-->
         </div>
     </div>
     
@@ -29,8 +32,8 @@
 </div>
 
 <!-- Joins Template -->
-<script type="text/x-kendo-template" id="joinsTemplate">
+<!--<script type="text/x-kendo-template" id="joinsTemplate">
     <div class="join-content">
         <h2 class="person-name">${User()}</h2>
     </div>
-</script>
+</script>-->
