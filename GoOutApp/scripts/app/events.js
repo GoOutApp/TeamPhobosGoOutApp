@@ -125,7 +125,7 @@ app.Events = (function () {
         var eventSelected = function (e) {
             console.log(e.data);
             // TODO: CHANGED TO e.data.CreatedBy / e.data.Id from e.data.Uid 
-            app.mobileApp.navigate('views/eventView.html?uid=' + e.data.Id);
+            app.mobileApp.navigate('views/events/eventView.html?uid=' + e.data.Id);
         };
         
         return {

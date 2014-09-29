@@ -111,7 +111,7 @@ app.Friends = (function () {
 
         // Navigate to friendView When some friend is selected
         var friendSelected = function (e) {
-            app.mobileApp.navigate('views/friendView.html?uid=' + e.data.uid);
+            app.mobileApp.navigate('views/friends/friendView.html?uid=' + e.data.uid);
         };
 
         var userSelected = function (e) {
