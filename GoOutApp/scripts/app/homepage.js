@@ -16,11 +16,15 @@ app.homepage = (function () {
         var addImage = function () {
 
             var success = function (data) {
-                everlive.Files.create({
+                var file = everlive.Files.create({
                     Filename: app.Users.currentUser.get('data').Username + ".jpg",
                     ContentType: "image/jpeg",
                     base64: data
                 }).then(loadImage)
+                var url = everlive.DATA_URL(file);   // UPLOADED FILE URL
+                //app.Users.currentUser.Avatar = url;
+                //app.Users.users.sync();
+                //currentUser.set('Avatar') = file;
             };
             var error = function () {
                 navigator.notification.alert("Unfortunately we could not add the image");
@@ -61,13 +65,28 @@ app.homepage = (function () {
             });
         };
     
+        // Navigate to app home
+        var navigateHome = function () {
+
+            app.mobileApp.navigate('#welcome');
+        };
+
+        // Logout user
+        var logout = function () {
+
+            app.helper.logout()
+            .then(navigateHome, function (err) {
+                app.showError(err.message);
+                navigateHome();
+            });
+        };
+
         return {
             addImage: addImage,
-            loadImage: loadImage
+            loadImage: loadImage,
+            logout: logout
         };        
     }());
     
     return homepageViewModel;
 }());
-
-   
