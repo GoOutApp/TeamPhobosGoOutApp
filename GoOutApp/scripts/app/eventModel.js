@@ -10,6 +10,7 @@ app.EventModel = (function () {
         
         var eventUid,
             event,
+            eventID,
             $eventPicture;
         
         var init = function () {
@@ -19,15 +20,24 @@ app.EventModel = (function () {
         
         var show = function (e) {
             
-            $friendsContainer.empty();
-            
-            listScroller = e.view.scroller;
-            listScroller.reset();
-            
-            eventUid = e.view.params.uid;
-            // Get current event (based on item uid) from Events model
-            event = app.Events.events.getByUid(eventUid);
-            $eventPicture[0].style.display = event.Picture ? 'block' : 'none';
+            eventID = e.view.params.uid;
+            //eventUid = e.view.params.uid;
+            var allevents = app.Events.events._view;
+            // Get event by user id
+            for (var ev in allevents) {
+                var currentEventId = allevents[ev].Id;
+                if (currentEventId === eventID) {
+                    event = allevents[ev];
+                    eventUid = event.CreatedBy;
+                    break;
+                }
+            }
+
+            //console.log(event);
+            //console.log(eventID);
+            //console.log(eventUid);
+
+            //$eventPicture[0].style.display = event.Picture ? 'block' : 'none';
             
             app.Friends.friends.filter({
                 field: 'EventId',
@@ -41,7 +51,7 @@ app.EventModel = (function () {
         var removeEvent = function () {
             
             var events = app.Events.events;
-            var event = events.getByUid(eventUid);
+            //var event = events.getByUid(eventUid);
             
             app.showConfirm(
                 appSettings.messages.removeEventConfirm,

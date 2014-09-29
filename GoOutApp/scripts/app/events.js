@@ -44,7 +44,7 @@ app.Events = (function () {
             },
             LocationFormatted: function () {
                 var eventCoords = this.get('Location');
-                console.log(eventCoords);
+                //console.log(eventCoords);
                 if (eventCoords !== 'No location provided') {
                     
                     var latlon = eventCoords.latitude + "," + eventCoords.longitude;
@@ -71,7 +71,7 @@ app.Events = (function () {
 
                 return user ? {
                     DisplayName: user.DisplayName,
-                    PictureUrl: app.helper.resolveProfilePictureUrl(user.Picture)
+                    PictureUrl: app.helper.resolveProfilePictureUrl(user.Avatar)
                 } : {
                     DisplayName: 'Anonymous',
                     PictureUrl: app.helper.resolveProfilePictureUrl()
@@ -123,7 +123,9 @@ app.Events = (function () {
 
         // Navigate to eventView When some event is selected
         var eventSelected = function (e) {
-            app.mobileApp.navigate('views/eventView.html?uid=' + e.data.uid);
+            console.log(e.data);
+            // TODO: CHANGED TO e.data.CreatedBy / e.data.Id from e.data.Uid 
+            app.mobileApp.navigate('views/eventView.html?uid=' + e.data.Id);
         };
         
         return {
